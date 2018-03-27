@@ -72,6 +72,14 @@ app.post('/recipes', jsonParser, (req, res) => {
   res.status(201).json(item);
 });
 
+//when client make a delete request to recipes it should delete recipe with id
+
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted recipe \`${req.params.id}\``);
+  res.status(204).end();
+});
+
 
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
